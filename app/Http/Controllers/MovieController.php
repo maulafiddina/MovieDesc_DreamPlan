@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\Http;
 
 class MovieController extends Controller
 {
+
+  //NAMBAHIN FUNGSI MOVIES () GITU ini bagian 03A
+  //yg  halaman movie
+  public function movies(){
+    return view('movie');
+  }
+
+
   public function index()
   {
     $baseURL = env('MOVIE_DB_BASE_URL');
