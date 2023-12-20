@@ -29,7 +29,7 @@ class MovieController extends Controller
     ]);
 
     // Prepare variable
-    $topMoviesArray = [];
+    $bannerArray = [];
 
     // Check API response BANNER RESPON INI YG JIONG KMRN
     if ($bannerResponse->successful()){
@@ -108,9 +108,9 @@ class MovieController extends Controller
       'baseURL' => $baseURL,
       'imageBaseURL' => $imageBaseURL,
       'apiKey' => $apiKey,
-      'banner' => $bannerArray
-      'topMovies' => $topMoviesArray
-      'topTVShows' => $topTVShowsArray
+      'banner' => $bannerArray,
+      'topMovies' => $topMoviesArray,
+      'topTVShows' => $topTVShowsArray,
     ]);
   }
 }

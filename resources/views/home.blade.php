@@ -83,7 +83,7 @@
                 <div class="overflow-hidden rounded-[32px]">
                   <img class="w-full h-[300px] rounded-[32px] group-hover:scale-125 duration-200" src="{{$movieImage}}"/>
                 </div>
-                <span class="font-inter font-bold text-xl mt-4 line-clamp-1 group-hover:line-clamp-none">{{$movieTittle}}</span>
+                <span class="font-inter font-bold text-xl mt-4 line-clamp-1 group-hover:line-clamp-none">{{$movieTitle}}</span>
                 <span class="font-inter text-sm mt-1">(($movieYear))</span>
                 <div class="flex flex-row mt-1 items-center">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,10 +120,10 @@
         <a href="/tv/{{$tvShowsID}}" class="group">
           <div class="min-w-[232px] min-h-[428px] bg-white drop-shadow-[0_0px_8px_rgba(0,0,0,0.25)] group-hover:drop-shadow-[0_0px_8px_rgba(0,0,0,0.5)] rounded-[32px] p-5 flex flex-col mr-8 duration-100">
             <div class="overflow-hidden rounded-[32px]">
-              <img class="w-full h-[300px] rounded-[32px] group-hover:scale-125 duration-200" src="{{ $tvShowsImage }}"/>
+              <img class="w-full h-[300px] rounded-[32px] group-hover:scale-125 duration-200" src="{{$tvShowsImage}}"/>
             </div>
             
-            <span class="font-inter font-bold text-xl mt-4 line-clamp-1 group-hover:line-clamp-none">{{ $tvShowTitle }}</span>
+            <span class="font-inter font-bold text-xl mt-4 line-clamp-1 group-hover:line-clamp-none">{{$tvShowsTitle}}</span>
             <span class="font-inter text-sm mt-1">{{$tvShowsYear}}</span>
             <div class="flex flex-row mt-1 items-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
