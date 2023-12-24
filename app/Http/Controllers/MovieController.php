@@ -111,6 +111,7 @@ class MovieController extends Controller
       'banner' => $bannerArray,
       'topMovies' => $topMoviesArray,
       'topTVShows' => $topTVShowsArray,
+      
     ]);
   }
 }
