@@ -1,15 +1,20 @@
-<div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Page</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    @vite('resources/css/app.css')
+    <!-- Include your Vite script here -->
+</head>
 
-    <body class="flex items-center justify-center h-screen bg-gray-200">
+<body class="bg-gray-100">
+    @include('header')
 
-        <div class="bg-white p-8 rounded shadow-md w-96">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded shadow-md w-96 mt-4 mb-20">
             @if(session()->has('success'))
             <div class="alert alert-dark alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -23,10 +28,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <h2 class="text-2xl font-bold mb-4">Login</h2>
+            <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
 
             <!-- Email and Password Form -->
-            <form method="post" action="/login">
+            <form method="post" action="/login" class="mx-auto">
                 @csrf
 
                 <div class="mb-4">
@@ -48,16 +53,16 @@
 
                 <!-- Login Button -->
                 <button type="submit"
-                    class="mx-auto bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600">Login</button>
+                    class="block w-full bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600">Login</button>
             </form>
 
-
             <!-- Register Link -->
-            <div class="mt-4">
+            <div class="mt-4 text-center">
                 <p class="text-gray-600">Don't have an account? <a href="/register" class="text-blue-500">Register</a>
                 </p>
             </div>
         </div>
+    </div>
+</body>
 
-    </body>
-</div>
+</html>
