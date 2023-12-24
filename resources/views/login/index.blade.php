@@ -10,16 +10,34 @@
     <body class="flex items-center justify-center h-screen bg-gray-200">
 
         <div class="bg-white p-8 rounded shadow-md w-96">
+            @if(session()->has('success'))
+            <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
+            @if(session()->has('loginError'))
+            <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                {{ session('loginError') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <h2 class="text-2xl font-bold mb-4">Login</h2>
 
             <!-- Email and Password Form -->
-            <form method="POST" action="">
+            <form method="post" action="/login">
                 @csrf
 
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
                     <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md" required
-                        autofocus>
+                        autofocus value="{{ old('email') }}">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
