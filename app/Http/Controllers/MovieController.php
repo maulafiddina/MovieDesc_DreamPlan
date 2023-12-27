@@ -155,4 +155,63 @@ class MovieController extends Controller
       
     ]);
   }
+
+  public function tvShows(){
+    // Get environment variable
+    $baseURL = env('MOVIE_DB_BASE_URL');
+    $imageBaseURL = env('MOVIE_DB_IMAGE_BASE_URL');
+    $apiKey = env('MOVIE_DB_API_KEY');
+    $sortBy = "popularity.desc";
+    $page = 1;
+    $minimalVoter = 100;
+  
+    // Hit API data
+    $tvResponse = Http::get("{$baseURL}/discover/tv", [
+      'api_key' => $apiKey,
+      'sort_by' => $sortBy,
+      'vote_count.gte' => $minimalVoter,
+      'page' => $page
+    ]);
+  
+    // Prepare variable
+    $tvArray = [];
+  
+    // Check API response
+    if ($tvResponse->successful()){
+      // Check data is null or not
+      $resultArray = $tvResponse->object()->results;
+      if (isset($resultArray)){
+        // Looping response data
+        foreach ($resultArray as $item) {
+          // Save response data to our array variable
+          array_push($tvArray, $item);
+        }
+      }
+    }
+  
+    // Show tv.blade.php with additional data
+    return view('tv', [
+      'baseURL' => $baseURL,
+      'imageBaseURL' => $imageBaseURL,
+      'apiKey' => $apiKey,
+      'tvShows' => $tvArray,
+      'sortBy' => $sortBy,
+      'page' => $page,
+      'minimalVoter' => $minimalVoter
+    ]);
+  }
+
+  public function search(){
+    // Get environment variable
+    $baseURL = env('MOVIE_DB_BASE_URL');
+    $imageBaseURL = env('MOVIE_DB_IMAGE_BASE_URL');
+    $apiKey = env('MOVIE_DB_API_KEY');
+  
+    // Show search.blade.php with additional data
+    return view('search', [
+      'baseURL' => $baseURL,
+      'imageBaseURL' => $imageBaseURL,
+      'apiKey' => $apiKey,
+    ]);
+  }
 }
