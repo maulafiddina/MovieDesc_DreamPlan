@@ -54,13 +54,14 @@
                 <!-- Login Button -->
                 <button type="submit"
                     class="block w-full bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600">Login</button>
-            </form>
 
-            <!-- Register Link -->
-            <div class="mt-4 text-center">
-                <p class="text-gray-600">Don't have an account? <a href="/register" class="text-blue-500">Register</a>
-                </p>
-            </div>
+                <!-- Register Link -->
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">Don't have an account? <a href="/register"
+                            class="text-blue-500">Register</a>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </body>

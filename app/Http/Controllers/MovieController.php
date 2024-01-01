@@ -51,7 +51,7 @@ class MovieController extends Controller
       'page' => $page,
       'minimalVoter' => $minimalVoter
     ]);
-    
+
   }
 
 
@@ -68,7 +68,6 @@ class MovieController extends Controller
     $bannerResponse = Http::get("{$baseURL}/trending/movie/week", [
       'api_key' => $apiKey,
     ]);
-
     // Prepare variable
     $bannerArray = [];
 
@@ -99,8 +98,8 @@ class MovieController extends Controller
     // Prepare variable
     $topMoviesArray = [];
 
-    // Check API response INI KAYANYA HARUS BUAT LAGI TP ERROR GA PAHAM GUE 
-    // POKOK E INI YANG 10 TOP MOVIES 
+    // Check API response INI KAYANYA HARUS BUAT LAGI TP ERROR GA PAHAM GUE
+    // POKOK E INI YANG 10 TOP MOVIES
     if ($topMoviesResponse->successful()){
       // Check data is null or not
       $resultArray = $topMoviesResponse->object()->results;
@@ -152,7 +151,7 @@ class MovieController extends Controller
       'banner' => $bannerArray,
       'topMovies' => $topMoviesArray,
       'topTVShows' => $topTVShowsArray,
-      
+
     ]);
   }
 
@@ -164,7 +163,7 @@ class MovieController extends Controller
     $sortBy = "popularity.desc";
     $page = 1;
     $minimalVoter = 100;
-  
+
     // Hit API data
     $tvResponse = Http::get("{$baseURL}/discover/tv", [
       'api_key' => $apiKey,
@@ -172,10 +171,10 @@ class MovieController extends Controller
       'vote_count.gte' => $minimalVoter,
       'page' => $page
     ]);
-  
+
     // Prepare variable
     $tvArray = [];
-  
+
     // Check API response
     if ($tvResponse->successful()){
       // Check data is null or not
@@ -188,7 +187,7 @@ class MovieController extends Controller
         }
       }
     }
-  
+
     // Show tv.blade.php with additional data
     return view('tv', [
       'baseURL' => $baseURL,
@@ -206,7 +205,7 @@ class MovieController extends Controller
     $baseURL = env('MOVIE_DB_BASE_URL');
     $imageBaseURL = env('MOVIE_DB_IMAGE_BASE_URL');
     $apiKey = env('MOVIE_DB_API_KEY');
-  
+
     // Show search.blade.php with additional data
     return view('search', [
       'baseURL' => $baseURL,
