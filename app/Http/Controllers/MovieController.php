@@ -213,4 +213,36 @@ class MovieController extends Controller
       'apiKey' => $apiKey,
     ]);
   }
+
+  public function movieDetails($id){
+    // Get environment variable
+    $baseURL = env('MOVIE_DB_BASE_URL');
+    $imageBaseURL = env('MOVIE_DB_IMAGE_BASE_URL');
+    $apiKey = env('MOVIE_DB_API_KEY');
+  
+    // Hit API data
+    $response = Http::get("{$baseURL}/movie/{$id}", [
+      'api_key' => $apiKey,
+      'append_to_response' => 'videos'
+    ]);
+  
+    // Prepare variable
+    $movieData = null;
+  
+    // Check API response
+    if ($response->successful()){
+      $movieData = $response->object();
+    }
+  
+    // Show movie_details.blade.php with additional data
+    return view('movie_details', [
+      'baseURL' => $baseURL,
+      'imageBaseURL' => $imageBaseURL,
+      'apiKey' => $apiKey,
+      'movieData' => $movieData
+    ]);
+  }
+
+  
+}
 }
