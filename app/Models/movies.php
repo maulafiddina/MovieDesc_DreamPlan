@@ -15,4 +15,9 @@ class movies extends Model
         return $this->belongsTo(genre::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }
