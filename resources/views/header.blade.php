@@ -18,6 +18,17 @@
             </svg>
         </a>
     </div>
+
+    @auth
+    <a href="/dashboard"
+    class="uppercase text-base mx-5 text-black hover:text-develobe-500 duration-200 font-inter">Dashboard</a>
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit" class="uppercase text-base mx-5 text-red hover:text-red-500 duration-200 font-inter">Logout</button>
+    </form>
+    @else
     <a href="/login"
-        class="uppercase text-base mx-5 text-black hover:text-develobe-500 duration-200 font-inter">Login</a>
+    class="uppercase text-base mx-5 text-black hover:text-develobe-500 duration-200 font-inter">Login</a>
+    @endauth
+
 </div>
